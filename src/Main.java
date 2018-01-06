@@ -38,11 +38,11 @@ public class Main {
             /*ConferencesEntity.createConference("kolchoz to zycie?",
                     false, null, sessionFactory);
             */
-            /**/ConferenceDaysEntity.createConferenceDay(
+            /*ConferenceDaysEntity.createConferenceDay(
                     new Timestamp(2018,1,5,12,0,0,0),
                     new Timestamp(2018,1,5,13,0,0,0),
                     40, 2 , sessionFactory);
-
+            */
 
             } finally {
             session.close();
