@@ -7,7 +7,10 @@
     <class name="model.ConferencesEntity" table="Conferences" schema="dbo" catalog="jsroka_a">
         <id name="conferenceId">
             <column name="ConferenceID" sql-type="int identity(10)"/>
+            <generator class="identity" />
         </id>
+        <many-to-one  name="organizer" column = "OrganizerID"
+                      class="model.OrganizersEntity" not-null="false" />
         <property name="isCanceled">
             <column name="isCanceled" sql-type="bit(1)"/>
         </property>

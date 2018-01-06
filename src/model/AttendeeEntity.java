@@ -19,6 +19,7 @@ public class AttendeeEntity {
     private String lastName;
     private String email;
     private String password;
+
     @ManyToOne
     @JoinColumn(name="CustomerId")
     private CustomerEntity customer;

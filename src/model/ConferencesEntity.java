@@ -1,15 +1,51 @@
 package model;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Conferences", schema = "dbo", catalog = "jsroka_a")
 public class ConferencesEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int conferenceId;
+
     private boolean isCanceled;
     private String conferenceName;
 
-    @Id
+    @ManyToOne
+    @JoinColumn(name="OrganizerId")
+    private OrganizersEntity organizer;
+
+
+    public static ConferencesEntity createConference(String conferenceName,
+                                                boolean isCanceled,
+                                                Integer organizerID,
+                                                SessionFactory factory){
+        ConferencesEntity conferencesEntity = new ConferencesEntity();
+        conferencesEntity.isCanceled = isCanceled;
+        conferencesEntity.conferenceName = conferenceName;
+
+        if (organizerID != null){
+            Session session = factory.openSession();
+            conferencesEntity.setOrganizer(session.load(OrganizersEntity.class,new Integer(organizerID)));
+        }
+        EntitySaver.save(factory,conferencesEntity);
+        return conferencesEntity;
+    }
+
+
+    public OrganizersEntity getOrganizer() {
+        return organizer;
+    }
+
+    public void setOrganizer(OrganizersEntity organizer) {
+        this.organizer = organizer;
+    }
+
     @Column(name = "ConferenceID", nullable = false)
     public int getConferenceId() {
         return conferenceId;

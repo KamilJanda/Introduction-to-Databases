@@ -1,9 +1,10 @@
 
-import model.AttendeeEntity;
-import model.CustomerEntity;
+import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.sql.Timestamp;
 
 
 public class Main {
@@ -28,9 +29,22 @@ public class Main {
                     "poland", "krakow", "xd/xd",
                     "915548756", null, false, sessionFactory);
             */
-            AttendeeEntity.createAttendee("Karol", "fala",
-                    "a2sd@asd.pl", "ala123",123,2,sessionFactory);
-        } finally {
+            /*AttendeeEntity.createAttendee("Karol", "popol",
+                    "a2ssd@asd.pl", "ala123",123,2,sessionFactory);
+            */
+            /*OrganizersEntity.createOrganizer("Adam Wachnik",
+                    "kolcho123@123.pl", "123123123", sessionFactory);
+            */
+            /*ConferencesEntity.createConference("kolchoz to zycie?",
+                    false, null, sessionFactory);
+            */
+            /**/ConferenceDaysEntity.createConferenceDay(
+                    new Timestamp(2018,1,5,12,0,0,0),
+                    new Timestamp(2018,1,5,13,0,0,0),
+                    40, 2 , sessionFactory);
+
+
+            } finally {
             session.close();
         }
     }

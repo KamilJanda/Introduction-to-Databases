@@ -22,7 +22,7 @@ public class CustomerEntity implements Serializable{
     private boolean isCompany;
     private String nip;
 
-    public CustomerEntity(){}
+    protected CustomerEntity(){}
 
     public static CustomerEntity createCustomer(String customerName,
                                                 String country,

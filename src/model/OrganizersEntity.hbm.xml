@@ -7,6 +7,7 @@
     <class name="model.OrganizersEntity" table="Organizers" schema="dbo" catalog="jsroka_a">
         <id name="organizerId">
             <column name="OrganizerID" sql-type="int identity(10)"/>
+            <generator class="identity" />
         </id>
         <property name="organizatorName">
             <column name="OrganizatorName" sql-type="nvarchar(50)"/>

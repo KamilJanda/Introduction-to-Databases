@@ -1,16 +1,37 @@
 package model;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Organizers", schema = "dbo", catalog = "jsroka_a")
 public class OrganizersEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int organizerId;
+
     private String organizatorName;
     private String email;
     private String phone;
 
-    @Id
+    protected OrganizersEntity(){ }
+
+
+    public static OrganizersEntity createOrganizer(String organizatorName,
+                                                String email,
+                                                String phone,
+                                                SessionFactory factory){
+        OrganizersEntity organizerEntity = new OrganizersEntity();
+        organizerEntity.organizatorName = organizatorName;
+        organizerEntity.phone = phone;
+        organizerEntity.email = email;
+
+        EntitySaver.save(factory,organizerEntity);
+        return organizerEntity;
+    }
+
     @Column(name = "OrganizerID", nullable = false)
     public int getOrganizerId() {
         return organizerId;

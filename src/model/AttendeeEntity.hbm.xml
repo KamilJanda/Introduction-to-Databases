@@ -10,7 +10,7 @@
             <generator class="identity" />
         </id>
         <many-to-one  name="customer" column = "customerid"
-                     class="model.CustomerEntity" not-null="false" />
+                     class="model.CustomerEntity" not-null="true" />
         <property name="studentIdCardNumber">
             <column name="StudentIDCardNumber" sql-type="int(10)" not-null="false"/>
         </property>
