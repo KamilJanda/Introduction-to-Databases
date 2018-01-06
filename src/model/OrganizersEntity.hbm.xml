@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.OrganizersEntity" table="Organizers" schema="dbo" catalog="jsroka_a">
+        <id name="organizerId">
+            <column name="OrganizerID" sql-type="int identity(10)"/>
+        </id>
+        <property name="organizatorName">
+            <column name="OrganizatorName" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="email">
+            <column name="Email" sql-type="nvarchar(50)" not-null="true"/>
+        </property>
+        <property name="phone">
+            <column name="Phone" sql-type="nvarchar(50)"/>
+        </property>
+    </class>
+</hibernate-mapping>

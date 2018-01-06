@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:sqlserver://mssql.iisg.agh.edu.pl;database=jsroka_a</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.username"> jsroka </property>
+        <property name="connection.password">4F9vKeXqqQ </property>
+        <mapping class="model.AttendeeEntity"/>
+        <mapping resource="model/AttendeeEntity.hbm.xml"/>
+        <mapping class="model.ConferenceDaysEntity"/>
+        <mapping resource="model/ConferenceDaysEntity.hbm.xml"/>
+        <mapping class="model.ConferencePrincipantsEntity"/>
+        <mapping resource="model/ConferencePrincipantsEntity.hbm.xml"/>
+        <mapping class="model.ConferenceReservationsEntity"/>
+        <mapping resource="model/ConferenceReservationsEntity.hbm.xml"/>
+        <mapping class="model.ConferencesEntity"/>
+        <mapping resource="model/ConferencesEntity.hbm.xml"/>
+        <mapping class="model.CustomerEntity"/>
+        <mapping resource="model/CustomerEntity.hbm.xml"/>
+        <mapping class="model.OrganizersEntity"/>
+        <mapping resource="model/OrganizersEntity.hbm.xml"/>
+        <mapping class="model.PricesEntity"/>
+        <mapping resource="model/PricesEntity.hbm.xml"/>
+        <mapping class="model.WorkshopPrincipantsEntity"/>
+        <mapping resource="model/WorkshopPrincipantsEntity.hbm.xml"/>
+        <mapping class="model.WorkshopReservationsEntity"/>
+        <mapping resource="model/WorkshopReservationsEntity.hbm.xml"/>
+        <mapping class="model.WorkshopsEntity"/>
+        <mapping resource="model/WorkshopsEntity.hbm.xml"/>
+
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

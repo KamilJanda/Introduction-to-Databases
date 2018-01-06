@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="model.WorkshopsEntity" table="Workshops" schema="dbo" catalog="jsroka_a">
+        <id name="workshopId">
+            <column name="WorkshopID" sql-type="int identity(10)"/>
+        </id>
+        <property name="workshopName">
+            <column name="WorkshopName" sql-type="nvarchar(50)" not-null="true"/>
+        </property>
+        <property name="seats">
+            <column name="Seats" sql-type="int(10)"/>
+        </property>
+        <property name="startTime">
+            <column name="StartTime" sql-type="time(16,7)"/>
+        </property>
+        <property name="endTime">
+            <column name="EndTime" sql-type="time(16,7)"/>
+        </property>
+        <property name="isCanceled">
+            <column name="isCanceled" sql-type="bit(1)"/>
+        </property>
+        <property name="price">
+            <column name="Price" sql-type="smallmoney(10,4)" precision="10" scale="4"/>
+        </property>
+    </class>
+</hibernate-mapping>
