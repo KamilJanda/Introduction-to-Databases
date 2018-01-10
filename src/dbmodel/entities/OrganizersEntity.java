@@ -1,6 +1,6 @@
-package model;
+package dbmodel.entities;
 
-import org.hibernate.Session;
+import dbmodel.EntitySaver;
 import org.hibernate.SessionFactory;
 
 import javax.persistence.*;

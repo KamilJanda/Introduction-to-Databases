@@ -4,13 +4,13 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.ConferencesEntity" table="Conferences" schema="dbo" catalog="jsroka_a">
+    <class name="dbmodel.entities.ConferencesEntity" table="Conferences" schema="dbo" catalog="jsroka_a">
         <id name="conferenceId">
             <column name="ConferenceID" sql-type="int identity(10)"/>
             <generator class="identity" />
         </id>
-        <many-to-one  name="organizer" column = "OrganizerID"
-                      class="model.OrganizersEntity" not-null="false" />
+        <many-to-one name="organizer" column = "OrganizerID"
+                     class="dbmodel.entities.OrganizersEntity" not-null="false" />
         <property name="isCanceled">
             <column name="isCanceled" sql-type="bit(1)"/>
         </property>

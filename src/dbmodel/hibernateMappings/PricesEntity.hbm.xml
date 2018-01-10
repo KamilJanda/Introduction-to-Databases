@@ -4,10 +4,13 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.PricesEntity" table="Prices" schema="dbo" catalog="jsroka_a">
+    <class name="dbmodel.entities.PricesEntity" table="Prices" schema="dbo" catalog="jsroka_a">
         <id name="priceId">
             <column name="PriceID" sql-type="int identity(10)"/>
+            <generator class="identity" />
         </id>
+        <many-to-one name="conferenceDay" column = "ConferenceDayID"
+                     class="dbmodel.entities.ConferenceDaysEntity" not-null="true" />
         <property name="studentDiscount">
             <column name="StudentDiscount" sql-type="float(53)" precision="53"/>
         </property>

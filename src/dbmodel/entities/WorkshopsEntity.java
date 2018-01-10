@@ -1,4 +1,8 @@
-package model;
+package dbmodel.entities;
+
+import dbmodel.EntitySaver;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -7,13 +11,51 @@ import java.sql.Time;
 @Entity
 @Table(name = "Workshops", schema = "dbo", catalog = "jsroka_a")
 public class WorkshopsEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int workshopId;
+
     private String workshopName;
     private int seats;
     private Time startTime;
     private Time endTime;
     private boolean isCanceled;
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name="ConferenceDayId")
+    private ConferenceDaysEntity conferenceDay;
+
+    protected WorkshopsEntity(){}
+
+    public static WorkshopsEntity createWorkshop(String workshopName,
+                                                 int seats,
+                                                 Time startTime,
+                                                 Time endTime,
+                                                 boolean isCanceled,
+                                                 BigDecimal price,
+                                                 int ConferenceDayID,
+                                                 SessionFactory factory){
+        WorkshopsEntity workshopsEntity = new WorkshopsEntity();
+        workshopsEntity.workshopName = workshopName;
+        workshopsEntity.seats = seats;
+        workshopsEntity.startTime = startTime;
+        workshopsEntity.endTime = endTime;
+        workshopsEntity.isCanceled = isCanceled;
+        workshopsEntity.price = price;
+
+        Session session = factory.openSession();
+        workshopsEntity.setConferenceDay(session.load(ConferenceDaysEntity.class,ConferenceDayID));
+        EntitySaver.save(factory,workshopsEntity);
+        return workshopsEntity;
+    }
+
+    public ConferenceDaysEntity getConferenceDay() {
+        return conferenceDay;
+    }
+
+    public void setConferenceDay(ConferenceDaysEntity conferenceDay) {
+        this.conferenceDay = conferenceDay;
+    }
 
     @Id
     @Column(name = "WorkshopID", nullable = false)

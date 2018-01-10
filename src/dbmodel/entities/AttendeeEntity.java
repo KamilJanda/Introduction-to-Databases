@@ -1,9 +1,8 @@
-package model;
+package dbmodel.entities;
 
-import org.hibernate.HibernateException;
+import dbmodel.EntitySaver;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import javax.persistence.*;
 

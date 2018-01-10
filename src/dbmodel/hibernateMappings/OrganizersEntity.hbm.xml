@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.OrganizersEntity" table="Organizers" schema="dbo" catalog="jsroka_a">
+    <class name="dbmodel.entities.OrganizersEntity" table="Organizers" schema="dbo" catalog="jsroka_a">
         <id name="organizerId">
             <column name="OrganizerID" sql-type="int identity(10)"/>
             <generator class="identity" />

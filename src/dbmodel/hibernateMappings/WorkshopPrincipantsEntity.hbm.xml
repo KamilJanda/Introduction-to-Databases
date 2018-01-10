@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="dbmodel.entities.WorkshopPrincipantsEntity" table="WorkshopPrincipants" schema="dbo" catalog="jsroka_a">
+        <id name="workshopPrincipantId">
+            <column name="WorkshopPrincipantID" sql-type="int identity(10)"/>
+            <generator class="identity" />
+        </id>
+        <many-to-one name="attendee" column = "AttendeeID"
+                     class="dbmodel.entities.AttendeeEntity" not-null="true" />
+        <many-to-one name="workshopReservation" column = "WorkshopReservationID"
+                     class="dbmodel.entities.WorkshopReservationsEntity" not-null="true" />
+    </class>
+</hibernate-mapping>

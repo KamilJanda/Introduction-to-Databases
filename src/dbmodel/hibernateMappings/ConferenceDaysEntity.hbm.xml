@@ -4,13 +4,13 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.ConferenceDaysEntity" table="ConferenceDays" schema="dbo" catalog="jsroka_a">
+    <class name="dbmodel.entities.ConferenceDaysEntity" table="ConferenceDays" schema="dbo" catalog="jsroka_a">
         <id name="conferenceDayId">
             <column name="ConferenceDayID" sql-type="int identity(10)"/>
             <generator class="identity" />
         </id>
-        <many-to-one  name="conference" column = "ConferenceID"
-                      class="model.ConferencesEntity" not-null="true" />
+        <many-to-one name="conference" column = "ConferenceID"
+                     class="dbmodel.entities.ConferencesEntity" not-null="true" />
         <property name="startDate">
             <column name="StartDate" sql-type="smalldatetime(16)"/>
         </property>

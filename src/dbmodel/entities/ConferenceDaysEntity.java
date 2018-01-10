@@ -1,5 +1,6 @@
-package model;
+package dbmodel.entities;
 
+import dbmodel.EntitySaver;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

@@ -4,12 +4,15 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.WorkshopsEntity" table="Workshops" schema="dbo" catalog="jsroka_a">
+    <class name="dbmodel.entities.WorkshopsEntity" table="Workshops" schema="dbo" catalog="jsroka_a">
         <id name="workshopId">
             <column name="WorkshopID" sql-type="int identity(10)"/>
+            <generator class="identity" />
         </id>
+        <many-to-one name="conferenceDay" column = "ConferenceDayID"
+                     class="dbmodel.entities.ConferenceDaysEntity" not-null="true" />
         <property name="workshopName">
-            <column name="WorkshopName" sql-type="nvarchar(50)" not-null="true"/>
+            <column name="WorkshopName" sql-type="nvarchar(50)" not-null="false"/>
         </property>
         <property name="seats">
             <column name="Seats" sql-type="int(10)"/>

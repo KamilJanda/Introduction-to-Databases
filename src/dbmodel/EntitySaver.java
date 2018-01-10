@@ -1,4 +1,4 @@
-package model;
+package dbmodel;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

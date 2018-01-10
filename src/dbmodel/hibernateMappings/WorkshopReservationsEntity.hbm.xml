@@ -4,10 +4,15 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="model.ConferenceReservationsEntity" table="ConferenceReservations" schema="dbo" catalog="jsroka_a">
-        <id name="conferenceReservationId">
-            <column name="ConferenceReservationID" sql-type="int identity(10)"/>
+    <class name="dbmodel.entities.WorkshopReservationsEntity" table="WorkshopReservations" schema="dbo" catalog="jsroka_a">
+        <id name="workshopReservationId">
+            <column name="WorkshopReservationID" sql-type="int identity(10)"/>
+            <generator class="identity" />
         </id>
+        <many-to-one name="conferenceReservation" column = "ConferenceReservatioID"
+                     class="dbmodel.entities.ConferenceReservationsEntity" not-null="true" />
+        <many-to-one name="workshop" column = "WorkshopID"
+                     class="dbmodel.entities.WorkshopsEntity" not-null="true" />
         <property name="quantity">
             <column name="Quantity" sql-type="int(10)"/>
         </property>
@@ -18,7 +23,7 @@
             <column name="Paid" sql-type="bit(1)"/>
         </property>
         <property name="reservationDate">
-            <column name="ReservationDate" sql-type="smalldatetime(16)"/>
+            <column name="reservationDate" sql-type="smalldatetime(16)"/>
         </property>
         <property name="isCanceled">
             <column name="isCanceled" sql-type="bit(1)"/>
