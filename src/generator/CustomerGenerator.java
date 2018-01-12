@@ -33,10 +33,10 @@ public class CustomerGenerator {
         add(new Place("Poland","Wroclaw", "Ogrodowa 8"));
         add(new Place("Poland","Wroclaw", "Ogrodowa 9"));
     }};
-    public static String[] companyNames = {"FakeCompany.zoo", "SuperCompany.inc",
+    private static String[] companyNames = {"FakeCompany.zoo", "SuperCompany.inc",
     "SuperFirma", "Luks", "Pigeon" , "Oracle" , "Motorola", "Samson", "Judas",
-    "China"};
-
+    "China", "Malboro" , "Ferari" , "Simoleone", "Gabani", "Panini"};
+    private static String[] noCompanyCustomerNames ={"PrivateCustomer"};
 
     private int numberOfCompanies;
     private int numberOfNotCompanyCustomers;
@@ -48,9 +48,10 @@ public class CustomerGenerator {
     }
 
     private void generateCompanies(SessionFactory sessionFactory) {
-        for(int i=0;i<this.numberOfCompanies;i++){
+        final int N = places.size()-1;
+        for(int i=0;i<numberOfCompanies;i++){
             CustomerEntity.createCustomer(companyNames[i],
-                    places.get(i).country,places.get(i).city, places.get(i).address,
+                    places.get(i%N).country,places.get(i%N).city, places.get(i%N).address,
                     Long.toString((long) (Math.random() * (maxPhoneNumber - minPhoneNumber) + minPhoneNumber)),
                     Long.toString((long) (Math.random() * (maxNIP - minNIP) + minNIP)),
                     true, sessionFactory);
@@ -58,6 +59,14 @@ public class CustomerGenerator {
     }
 
     private void generateNoCompanyCustomers(SessionFactory sessionFactory) {
+        final int N = places.size()-1;
+        for(int i=0;i<numberOfNotCompanyCustomers;i++){
+            CustomerEntity.createCustomer(noCompanyCustomerNames[0],
+                    places.get((N-i)%N).country,places.get((N-i)%N).city, places.get((N-i)%N).address,
+                    Long.toString((long) (Math.random() * (maxPhoneNumber - minPhoneNumber) + minPhoneNumber)),
+                    null,
+                    false, sessionFactory);
+        }
     }
 
     private static class Place{
