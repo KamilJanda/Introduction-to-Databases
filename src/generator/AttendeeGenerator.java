@@ -14,7 +14,7 @@ public class AttendeeGenerator {
     private static final int minID = 100000;
 
     private int numberOfAttendee;
-    private int numberOfCustomers;
+    private int customerID;
 
     static {
         firstNames=createFirstNames();
@@ -22,9 +22,9 @@ public class AttendeeGenerator {
 
     }
 
-    public AttendeeGenerator(int numberOfAttendee, int numberOfCustomers) {
+    public AttendeeGenerator(int numberOfAttendee, int customerID) {
         this.numberOfAttendee = numberOfAttendee;
-        this.numberOfCustomers = numberOfCustomers;
+        this.customerID = customerID;
     }
 
     public void generateAttendee(SessionFactory sessionFactory)
@@ -36,7 +36,6 @@ public class AttendeeGenerator {
         String email=null;
         String password=null;
         int studentID=0;
-        int customerId=0;
 
         for (int i=0;i<numberOfAttendee;i++)
         {
@@ -47,8 +46,6 @@ public class AttendeeGenerator {
             email=firstName.toLowerCase()+lastName.toLowerCase()+"@random.com";
             password= UUID.randomUUID().toString().substring(0,15);
             studentID=new Random().nextInt((maxID-minID)+1)+minID;
-            //TO DO
-            customerId=new Random().nextInt(numberOfCustomers)+100;
 
             AttendeeEntity.createAttendee(
                     firstName,
@@ -56,7 +53,7 @@ public class AttendeeGenerator {
                     email,
                     password,
                     studentID,
-                    customerId,
+                    this.customerID,
                     sessionFactory);
         }
     }

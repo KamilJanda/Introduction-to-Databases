@@ -79,7 +79,7 @@ public class Main {
             //CustomerGenerator gen = new CustomerGenerator(15,3);
             //gen.generateCustomers(sessionFactory);
 
-            AttendeeGenerator attendeeGenerator = new AttendeeGenerator(1,50);
+            AttendeeGenerator attendeeGenerator = new AttendeeGenerator(1,1);
             attendeeGenerator.generateAttendee(sessionFactory);
 
             System.out.println("operation done successfully");
