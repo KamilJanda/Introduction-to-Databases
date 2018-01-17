@@ -76,8 +76,11 @@ public class Main {
                     sessionFactory);
             */
 
-            CustomerGenerator gen = new CustomerGenerator(15,3);
-            gen.generateCustomers(sessionFactory);
+            //CustomerGenerator gen = new CustomerGenerator(15,3);
+            //gen.generateCustomers(sessionFactory);
+
+            AttendeeGenerator attendeeGenerator = new AttendeeGenerator(1,50);
+            attendeeGenerator.generateAttendee(sessionFactory);
 
             System.out.println("operation done successfully");
             } finally {
