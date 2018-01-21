@@ -49,6 +49,12 @@ public class PricesGenerator {
         }
 
         Arrays.sort(result);
+
+        for(int i=1;i<numberOfPrices;i++)
+        {
+            result[i]+=i;
+        }
+
         return result;
     }
 
