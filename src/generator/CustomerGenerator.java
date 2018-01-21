@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class CustomerGenerator {
     private final static long minPhoneNumber = 111111111;
@@ -66,10 +67,14 @@ public class CustomerGenerator {
     }
 
     private void generateCompanies(SessionFactory sessionFactory) {
-        final int N = places.size()-1;
+        //final int N = places.size()-1;
+        final int index=new Random().nextInt(companyNames.length);
+        final int placesIndex=new Random().nextInt(places.size());
+
+
         for(int i=0;i<numberOfCompanies;i++){
-            CustomerEntity.createCustomer(companyNames[i],
-                    places.get(i%N).country,places.get(i%N).city, places.get(i%N).address,
+            CustomerEntity.createCustomer(companyNames[index],
+                    places.get(placesIndex).country,places.get(placesIndex).city, places.get(placesIndex).address,
                     Long.toString((long) (Math.random() * (maxPhoneNumber - minPhoneNumber) + minPhoneNumber)),
                     Long.toString((long) (Math.random() * (maxNIP - minNIP) + minNIP)),
                     true, sessionFactory);
@@ -77,10 +82,12 @@ public class CustomerGenerator {
     }
 
     private void generateNoCompanyCustomers(SessionFactory sessionFactory) {
-        final int N = places.size()-1;
+        //final int N = places.size()-1;
+        final int placesIndex=new Random().nextInt(places.size());
+
         for(int i=0;i<numberOfNotCompanyCustomers;i++){
             CustomerEntity.createCustomer(noCompanyCustomerNames[0],
-                    places.get((N-i)%N).country,places.get((N-i)%N).city, places.get((N-i)%N).address,
+                    places.get(placesIndex).country,places.get(placesIndex).city, places.get(placesIndex).address,
                     Long.toString((long) (Math.random() * (maxPhoneNumber - minPhoneNumber) + minPhoneNumber)),
                     null,
                     false, sessionFactory);
