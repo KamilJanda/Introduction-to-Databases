@@ -41,6 +41,24 @@ public class CustomerGenerator {
     private int numberOfCompanies;
     private int numberOfNotCompanyCustomers;
 
+    private SessionFactory sessionFactory;
+
+    public CustomerGenerator(int numberOfCompanies, int numberOfNotCompanyCustomers){
+        this.numberOfCompanies = numberOfCompanies;
+        this.numberOfNotCompanyCustomers = numberOfNotCompanyCustomers;
+    }
+
+    public CustomerGenerator(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public void generateCustomers(int numberOfCompanies, int numberOfNotCompanyCustomers)
+    {
+        this.numberOfCompanies=numberOfCompanies;
+        this.numberOfNotCompanyCustomers=numberOfNotCompanyCustomers;
+        this.generateCompanies(sessionFactory);
+        this.generateNoCompanyCustomers(sessionFactory);
+    }
 
     public void generateCustomers(SessionFactory sessionFactory){
         this.generateCompanies(sessionFactory);
@@ -82,10 +100,7 @@ public class CustomerGenerator {
     }
 
 
-    public CustomerGenerator(int numberOfCompanies, int numberOfNotCompanyCustomers){
-        this.numberOfCompanies = numberOfCompanies;
-        this.numberOfNotCompanyCustomers = numberOfNotCompanyCustomers;
-    }
+
 
 
 }

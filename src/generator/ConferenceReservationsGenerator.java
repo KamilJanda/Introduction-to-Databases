@@ -15,17 +15,13 @@ public class ConferenceReservationsGenerator {
 
     private static int maxDayToConference=100;
 
-    private int customerID;
-    private int conferenceDayID;
-    private int maxSeatsOnConference;
-    private String ConferenceStartTime;
+
     private DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public ConferenceReservationsGenerator(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime) {
-        this.customerID = customerID;
-        this.conferenceDayID = conferenceDayID;
-        this.maxSeatsOnConference = maxSeatsOnConference;
-        ConferenceStartTime = conferenceStartTime;
+    private SessionFactory sessionFactory;
+
+    public ConferenceReservationsGenerator(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     private Date generateDate(String conferenceStartTime)
@@ -44,11 +40,11 @@ public class ConferenceReservationsGenerator {
         return result;
     }
 
-    public void generateConferenceReservations(SessionFactory sessionFactory, boolean paid)
+    public void generateConferenceReservations(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime, boolean paid)
     {
         int quantity = new Random().nextInt(maxSeatsOnConference)+1;
         int studentsIncluded = new Random().nextInt(quantity+1);
-        Date reservationDate=generateDate(this.ConferenceStartTime);
+        Date reservationDate=generateDate(conferenceStartTime);
 
         Calendar cal=Calendar.getInstance();
         cal.setTime(reservationDate);

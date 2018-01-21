@@ -90,10 +90,13 @@ public class Main {
 
             ConferenceDaysGenerator conferenceDaysGenerator=new ConferenceDaysGenerator(5);
             conferenceDaysGenerator.generateConferenceDaysGenerator(sessionFactory,"2018-02-05 12:00:00",44);
-            */
 
             PricesGenerator pricesGenerator=new PricesGenerator(3,38);
             pricesGenerator.generatePrices(sessionFactory);
+*/
+
+            WorkshopsGenerator workshopsGenerator=new WorkshopsGenerator(sessionFactory);
+            workshopsGenerator.generateWorkshops(44,2);
 
 
 

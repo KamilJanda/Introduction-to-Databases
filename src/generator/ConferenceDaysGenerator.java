@@ -15,13 +15,13 @@ public class ConferenceDaysGenerator {
 
     private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    private int conferenceID;
+    private SessionFactory sessionFactory;
 
-    public ConferenceDaysGenerator(int conferenceID) {
-        this.conferenceID = conferenceID;
+    public ConferenceDaysGenerator(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
-    public void generateConferenceDaysGenerator(SessionFactory sessionFactory,String startTime, int seats)
+    public void generateConferenceDaysGenerator(int conferenceID, String startTime, int seats)
     {
         Date startDate=null;
         try {

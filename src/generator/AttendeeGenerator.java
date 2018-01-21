@@ -13,8 +13,7 @@ public class AttendeeGenerator {
     private static final int maxID = 999999;
     private static final int minID = 100000;
 
-    private int numberOfAttendee;
-    private int customerID;
+    private SessionFactory sessionFactory;
 
     static {
         firstNames=createFirstNames();
@@ -22,12 +21,11 @@ public class AttendeeGenerator {
 
     }
 
-    public AttendeeGenerator(int numberOfAttendee, int customerID) {
-        this.numberOfAttendee = numberOfAttendee;
-        this.customerID = customerID;
+    public AttendeeGenerator(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
-    public void generateAttendee(SessionFactory sessionFactory)
+    public void generateAttendee(int numberOfAttendee, int customerID)
     {
         int firstNameIndex=0;
         int lastNameIndex=0;
@@ -53,7 +51,7 @@ public class AttendeeGenerator {
                     email,
                     password,
                     studentID,
-                    this.customerID,
+                    customerID,
                     sessionFactory);
         }
     }
