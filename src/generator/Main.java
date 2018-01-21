@@ -78,9 +78,24 @@ public class Main {
 
             //CustomerGenerator gen = new CustomerGenerator(15,3);
             //gen.generateCustomers(sessionFactory);
-
+            /*
             AttendeeGenerator attendeeGenerator = new AttendeeGenerator(1,1);
             attendeeGenerator.generateAttendee(sessionFactory);
+
+
+
+            ConferenceReservationsGenerator conferenceReservationsGenerator=new ConferenceReservationsGenerator(1,10,40,"2018-02-05 12:00:00");
+            conferenceReservationsGenerator.generateConferenceReservations(sessionFactory,true);
+
+
+            ConferenceDaysGenerator conferenceDaysGenerator=new ConferenceDaysGenerator(5);
+            conferenceDaysGenerator.generateConferenceDaysGenerator(sessionFactory,"2018-02-05 12:00:00",44);
+            */
+
+            PricesGenerator pricesGenerator=new PricesGenerator(3,38);
+            pricesGenerator.generatePrices(sessionFactory);
+
+
 
             System.out.println("operation done successfully");
             } finally {

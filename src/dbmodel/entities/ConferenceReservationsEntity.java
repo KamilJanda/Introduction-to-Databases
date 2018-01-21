@@ -6,6 +6,7 @@ import org.hibernate.SessionFactory;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "ConferenceReservations", schema = "dbo", catalog = "jsroka_a")
@@ -18,7 +19,7 @@ public class ConferenceReservationsEntity {
     private boolean paid;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Timestamp reservationDate;
+    private Date reservationDate;
     private boolean isCanceled;
 
     @ManyToOne
@@ -32,13 +33,13 @@ public class ConferenceReservationsEntity {
     protected ConferenceReservationsEntity(){}
 
     public static ConferenceReservationsEntity createConferenceReservation(int quantity,
-                                           int studentsIncluded,
-                                           boolean paid,
-                                           Timestamp reservationDate,
-                                           boolean isCanceled,
-                                           int CustomerID,
-                                           int ConferenceDayId,
-                                           SessionFactory factory){
+                                                                           int studentsIncluded,
+                                                                           boolean paid,
+                                                                           Date reservationDate,
+                                                                           boolean isCanceled,
+                                                                           int CustomerID,
+                                                                           int ConferenceDayId,
+                                                                           SessionFactory factory){
         ConferenceReservationsEntity conferenceReservationsEntity = new ConferenceReservationsEntity();
         conferenceReservationsEntity.quantity = quantity;
         conferenceReservationsEntity.studentsIncluded = studentsIncluded;
@@ -114,7 +115,7 @@ public class ConferenceReservationsEntity {
 
     @Basic
     @Column(name = "ReservationDate", nullable = false)
-    public Timestamp getReservationDate() {
+    public Date getReservationDate() {
         return reservationDate;
     }
 
