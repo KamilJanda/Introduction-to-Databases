@@ -13,8 +13,8 @@ import java.util.Random;
 
 public class ConferenceReservationsGenerator {
 
-    private static int maxDayToConference=100;
-
+    private static int maxDayToConference=30;
+    private int quantityGenerated;
 
     private DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -40,9 +40,10 @@ public class ConferenceReservationsGenerator {
         return result;
     }
 
-    public void generateConferenceReservations(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime, boolean paid)
+    public void generateConferenceReservations(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime)
     {
-        int quantity = new Random().nextInt(maxSeatsOnConference)+1;
+        int quantity = new Random().nextInt((maxSeatsOnConference)/2)+1;
+        this.quantityGenerated=quantity;
         int studentsIncluded = new Random().nextInt(quantity+1);
         Date reservationDate=generateDate(conferenceStartTime);
 
@@ -57,6 +58,8 @@ public class ConferenceReservationsGenerator {
         int sec=cal.get(Calendar.SECOND);
 
         boolean isCancelled;
+
+        boolean paid=new Random().nextBoolean();
 
         if(paid)
             isCancelled=false;
@@ -77,5 +80,11 @@ public class ConferenceReservationsGenerator {
     }
 
 
+    public static void setMaxDayToConference(int maxDayToConference) {
+        ConferenceReservationsGenerator.maxDayToConference = maxDayToConference;
+    }
 
+    public int getQuantityGenerated() {
+        return quantityGenerated;
+    }
 }

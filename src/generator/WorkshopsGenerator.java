@@ -64,7 +64,7 @@ public class WorkshopsGenerator {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        
+
         Time start= new Time(calStart.get(Calendar.HOUR_OF_DAY),calStart.get(Calendar.MINUTE),calStart.get(Calendar.SECOND));
         Time end= new Time(calEnd.get(Calendar.HOUR_OF_DAY),calEnd.get(Calendar.MINUTE),calEnd.get(Calendar.SECOND));
 

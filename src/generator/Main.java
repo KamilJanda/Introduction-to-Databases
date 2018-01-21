@@ -93,11 +93,14 @@ public class Main {
 
             PricesGenerator pricesGenerator=new PricesGenerator(3,38);
             pricesGenerator.generatePrices(sessionFactory);
-*/
+
 
             WorkshopsGenerator workshopsGenerator=new WorkshopsGenerator(sessionFactory);
             workshopsGenerator.generateWorkshops(44,2);
+*/
 
+            WorkshopReservationsGenerator workshopReservationsGenerator=new WorkshopReservationsGenerator(sessionFactory);
+            workshopReservationsGenerator.generateWorkshopReservations(1,1,19,"2018-01-02 08:00:00");
 
 
             System.out.println("operation done successfully");
