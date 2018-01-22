@@ -15,6 +15,7 @@ public class ConferenceReservationsGenerator {
 
     private static int maxDayToConference=30;
     private int quantityGenerated;
+    private boolean paid;
 
     private DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -40,7 +41,8 @@ public class ConferenceReservationsGenerator {
         return result;
     }
 
-    public void generateConferenceReservations(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime)
+
+    public void generateConferenceReservationsRandomSeats(int customerID, int conferenceDayID, int maxSeatsOnConference, String conferenceStartTime)
     {
         int quantity = new Random().nextInt((maxSeatsOnConference)/2)+1;
         this.quantityGenerated=quantity;
@@ -60,6 +62,48 @@ public class ConferenceReservationsGenerator {
         boolean isCancelled;
 
         boolean paid=new Random().nextBoolean();
+        this.paid=paid;
+
+        if(paid)
+            isCancelled=false;
+        else
+            isCancelled=new Random().nextBoolean();
+
+
+
+        ConferenceReservationsEntity.createConferenceReservation(
+                quantity,
+                studentsIncluded,
+                paid,
+                new Timestamp(year,month,day,hour,minute,sec,0),
+                isCancelled,
+                customerID,
+                conferenceDayID,
+                sessionFactory);
+    }
+
+
+    public void generateConferenceReservations(int customerID, int conferenceDayID, int seats, String conferenceStartTime)
+    {
+        int quantity = seats;
+        this.quantityGenerated=quantity;
+        int studentsIncluded = new Random().nextInt(quantity+1);
+        Date reservationDate=generateDate(conferenceStartTime);
+
+        Calendar cal=Calendar.getInstance();
+        cal.setTime(reservationDate);
+
+        int year=cal.get(Calendar.YEAR);
+        int month=cal.get(Calendar.MONTH)+1;
+        int day=cal.get(Calendar.DAY_OF_MONTH);
+        int hour=cal.get(Calendar.HOUR_OF_DAY);
+        int minute=cal.get(Calendar.MINUTE);
+        int sec=cal.get(Calendar.SECOND);
+
+        boolean isCancelled;
+
+        boolean paid=new Random().nextBoolean();
+        this.paid=paid;
 
         if(paid)
             isCancelled=false;
@@ -86,5 +130,9 @@ public class ConferenceReservationsGenerator {
 
     public int getQuantityGenerated() {
         return quantityGenerated;
+    }
+
+    public boolean isPaid() {
+        return paid;
     }
 }

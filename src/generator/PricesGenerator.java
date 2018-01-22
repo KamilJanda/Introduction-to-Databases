@@ -71,6 +71,12 @@ public class PricesGenerator {
 
         Arrays.sort(result, Collections.reverseOrder());
 
+        for(int i=0;i<numberOfPrices;i++)
+        {
+            result[i] = result[i].add(new BigDecimal(i*0.33).setScale(2, RoundingMode.HALF_UP));
+        }
+
+
         return result;
     }
 

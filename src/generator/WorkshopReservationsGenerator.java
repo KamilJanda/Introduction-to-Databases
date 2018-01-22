@@ -15,6 +15,7 @@ public class WorkshopReservationsGenerator {
 
     private SessionFactory sessionFactory;
     private int quantityGenerated;
+    boolean paid;
 
     private DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private int maxDayToWorkshop=30;
@@ -49,6 +50,7 @@ public class WorkshopReservationsGenerator {
 
         boolean isCancelled;
         boolean paid=new Random().nextBoolean();
+        this.paid=paid;
 
         if(paid)
             isCancelled=false;
@@ -84,5 +86,10 @@ public class WorkshopReservationsGenerator {
 
     public int getQuantityGenerated() {
         return quantityGenerated;
+    }
+
+
+    public boolean isPaid() {
+        return paid;
     }
 }
