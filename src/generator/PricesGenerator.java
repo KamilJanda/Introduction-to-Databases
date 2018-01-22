@@ -71,11 +71,16 @@ public class PricesGenerator {
 
         Arrays.sort(result, Collections.reverseOrder());
 
-        for(int i=0;i<numberOfPrices;i++)
+
+        for(int i=1;i<numberOfPrices;i++)
         {
-            result[i] = result[i].add(new BigDecimal(i*0.33).setScale(2, RoundingMode.HALF_UP));
+            if(result[i-1].equals(result[i]))
+            {
+                result[i] = result[i].add(new BigDecimal(new Random().nextDouble()).setScale(2, RoundingMode.HALF_UP));
+            }
         }
 
+        Arrays.sort(result, Collections.reverseOrder());
 
         return result;
     }
@@ -91,6 +96,9 @@ public class PricesGenerator {
         {
             PricesEntity.createPrice(studentDiscount[i],daysToConference[i],priceValue[i],conferenceDayID,sessionFactory);
         }
+
+
+
     }
 
 

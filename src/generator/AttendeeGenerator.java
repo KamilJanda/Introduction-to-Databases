@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public class AttendeeGenerator {
 
+    private static int cnt=1;
     private static final String[] firstNames;
     private static final String[] lastNames;
     private static final int maxID = 999999;
@@ -41,7 +42,8 @@ public class AttendeeGenerator {
             lastNameIndex=new Random().nextInt(lastNames.length);
             firstName=firstNames[firstNameIndex];
             lastName=lastNames[lastNameIndex];
-            email=firstName.toLowerCase()+lastName.toLowerCase()+Integer.toString(new Random().nextInt(1000))+"@random.com";
+            email=firstName.toLowerCase()+lastName.toLowerCase()+Integer.toString(cnt)+"@random.com";
+            cnt++;
             password= UUID.randomUUID().toString().substring(0,15);
             studentID=new Random().nextInt((maxID-minID)+1)+minID;
 

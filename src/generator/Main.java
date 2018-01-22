@@ -104,7 +104,7 @@ public class Main {
             WorkshopReservationsGenerator workshopReservationsGenerator=new WorkshopReservationsGenerator(sessionFactory);
             workshopReservationsGenerator.generateWorkshopReservations(1,1,19,"2018-01-02 08:00:00");
 */
-
+/*
             String[] startTimes=new String[]{"2017-02-12 18:00:00","2017-02-22 08:00:00",
                     "2017-11-12 09:00:00","2016-03-24 11:00:00","2016-01-02 11:00:00",
                     "2015-04-12 13:00:00","2015-01-12 09:00:00","2016-05-17 16:30:00",};
@@ -114,7 +114,7 @@ public class Main {
             int numberOfCustomers=400;
             int numberOfConferences=300;
             int maxNumberOfSeats=100;
-/*
+
             for(int i=0;i<150;i++)
             {
                 OrganizersGenerator organizersGenerator = new OrganizersGenerator(sessionFactory);
@@ -135,66 +135,10 @@ public class Main {
             }
 
 */
-/*
-            int numberOfConferenceReservation=5;
 
-
-            for(int conferenceReservationID=0;conferenceReservationID<numberOfConferenceReservation;conferenceReservationID++) {
-
-                int customerID=new Random().nextInt(numberOfCustomers)+1;
-                int maxSeatsOnConference=new Random().nextInt(maxNumberOfSeats)+1;
-                String conferenceStartTime=startTimes[new Random().nextInt(startTimes.length)];
-                int conferenceID=new Random().nextInt(numberOfConferences)+1;
-                int seatsOnWorkshop=new Random().nextInt(maxSeatsOnConference)+1;
-                int numberOfAttendee=new Random().nextInt(maxSeatsOnConference)+1;
-                int conferenceDayID=0;
-
-                AttendeeGenerator attendeeGenerator = new AttendeeGenerator(sessionFactory);
-                attendeeGenerator.generateAttendee(numberOfAttendee, customerID);
-
-                int numberOfConferenceDays=new Random().nextInt(maxNumberOfDaysInConference)+1;
-
-                for(int i=0;i<numberOfConferenceDays;i++)
-                {
-                    ConferenceDaysGenerator conferenceDaysGenerator = new ConferenceDaysGenerator(sessionFactory);
-                    conferenceDaysGenerator.generateConferenceDaysGenerator(conferenceID, conferenceStartTime, maxSeatsOnConference);
-                    conferenceDayID++;
-
-                    ConferenceReservationsGenerator conferenceReservationsGenerator = new ConferenceReservationsGenerator(sessionFactory);
-                    conferenceReservationsGenerator.generateConferenceReservations(customerID,conferenceDayID, maxSeatsOnConference, conferenceStartTime);
-
-
-
-
-                }
-
-
-
-
-
-
-
-
-                ConferenceParticipantsGenerator conferenceParticipantsGenerator = new ConferenceParticipantsGenerator(sessionFactory);
-                conferenceParticipantsGenerator.generateConferencePrincipants();
-
-                WorkshopsGenerator workshopsGenerator = new WorkshopsGenerator(sessionFactory);
-                workshopsGenerator.generateWorkshops(seatsOnWorkshop, );
-
-                WorkshopReservationsGenerator workshopReservationsGenerator = new WorkshopReservationsGenerator(sessionFactory);
-                workshopReservationsGenerator.generateWorkshopReservations(, , seatsOnWorkshop, conferenceStartTime);
-
-                WorkshopPrincipantsGenerator workshopPrincipantsGenerator = new WorkshopPrincipantsGenerator(sessionFactory);
-                workshopPrincipantsGenerator.generateWorkshopPrincipants();
-
-
-            }
-
-
-*/
 
             GeneratorManager generatorManager=new GeneratorManager(sessionFactory);
-            generatorManager.generate(0,0,0,0,10,0);
+            generatorManager.generate(0,0,0,0,10,0,40);
 
 
             System.out.println("operation done successfully");
