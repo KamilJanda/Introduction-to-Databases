@@ -7,7 +7,7 @@
         <property name="connection.url">jdbc:sqlserver://mssql.iisg.agh.edu.pl;database=jsroka_a</property>
         <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
         <property name="connection.username"> jsroka </property>
-        <property name="connection.password">4F9vKeXqqQ </property>
+        <property name="connection.password">XDDDDDDDDDDD </property>
         <mapping class="dbmodel.entities.AttendeeEntity"/>
         <mapping resource="dbmodel/hibernateMappings/AttendeeEntity.hbm.xml"/>
         <mapping class="dbmodel.entities.ConferenceDaysEntity"/>
