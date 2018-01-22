@@ -42,7 +42,7 @@ public class WorkshopReservationsGenerator {
     }
 
 
-    public void generateWorkshopReservations(int conferenceReservationID,int workshopID,int maxSeatsOnWorkshop,String conferenceDayStartDate)
+    public void generateWorkshopReservationsRandom(int conferenceReservationID,int workshopID,int maxSeatsOnWorkshop,String conferenceDayStartDate)
     {
         int quantity=new Random().nextInt(maxSeatsOnWorkshop/2)+1;
         this.quantityGenerated=quantity;
@@ -83,6 +83,46 @@ public class WorkshopReservationsGenerator {
 
     }
 
+    public void generateWorkshopReservations(int conferenceReservationID,int workshopID,int seatsOnWorkshopReservation,String conferenceDayStartDate)
+    {
+        int quantity=seatsOnWorkshopReservation;
+        this.quantityGenerated=quantity;
+        int studentIncluded=new Random().nextInt(quantity);
+
+        boolean isCancelled;
+        boolean paid=new Random().nextBoolean();
+        this.paid=paid;
+
+        if(paid)
+            isCancelled=false;
+        else
+            isCancelled=new Random().nextBoolean();
+
+
+        Date reservationDate=generateDate(conferenceDayStartDate);
+
+        Calendar cal=Calendar.getInstance();
+        cal.setTime(reservationDate);
+
+        int year=cal.get(Calendar.YEAR);
+        int month=cal.get(Calendar.MONTH)+1;
+        int day=cal.get(Calendar.DAY_OF_MONTH);
+        int hour=cal.get(Calendar.HOUR_OF_DAY);
+        int minute=cal.get(Calendar.MINUTE);
+        int sec=cal.get(Calendar.SECOND);
+
+        WorkshopReservationsEntity.createWorkshopReservation(
+                quantity,
+                studentIncluded,
+                paid,
+                new Timestamp(year,month,day,hour,minute,sec,0),
+                isCancelled,
+                conferenceReservationID,
+                workshopID,
+                sessionFactory
+        );
+
+    }
 
     public int getQuantityGenerated() {
         return quantityGenerated;

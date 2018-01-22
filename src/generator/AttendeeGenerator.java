@@ -41,7 +41,7 @@ public class AttendeeGenerator {
             lastNameIndex=new Random().nextInt(lastNames.length);
             firstName=firstNames[firstNameIndex];
             lastName=lastNames[lastNameIndex];
-            email=firstName.toLowerCase()+lastName.toLowerCase()+Integer.toString(i)+"@random.com";
+            email=firstName.toLowerCase()+lastName.toLowerCase()+Integer.toString(new Random().nextInt(1000))+"@random.com";
             password= UUID.randomUUID().toString().substring(0,15);
             studentID=new Random().nextInt((maxID-minID)+1)+minID;
 

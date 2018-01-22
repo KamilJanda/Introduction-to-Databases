@@ -124,6 +124,7 @@ public class ConferenceReservationsGenerator {
     }
 
 
+
     public static void setMaxDayToConference(int maxDayToConference) {
         ConferenceReservationsGenerator.maxDayToConference = maxDayToConference;
     }

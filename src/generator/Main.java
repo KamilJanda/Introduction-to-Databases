@@ -194,7 +194,7 @@ public class Main {
 */
 
             GeneratorManager generatorManager=new GeneratorManager(sessionFactory);
-            generatorManager.generate(0,0,0,0,50,0);
+            generatorManager.generate(0,0,0,0,10,0);
 
 
             System.out.println("operation done successfully");
