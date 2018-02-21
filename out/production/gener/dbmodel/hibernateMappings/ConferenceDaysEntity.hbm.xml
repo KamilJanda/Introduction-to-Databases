@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="dbmodel.entities.ConferenceDaysEntity" table="ConferenceDays" schema="dbo" catalog="jsroka_a">
+        <id name="conferenceDayId">
+            <column name="ConferenceDayID" sql-type="int identity(10)"/>
+            <generator class="identity" />
+        </id>
+        <many-to-one name="conference" column = "ConferenceID"
+                     class="dbmodel.entities.ConferencesEntity" not-null="true" />
+        <property name="startDate">
+            <column name="StartDate" sql-type="smalldatetime(16)"/>
+        </property>
+        <property name="endDate">
+            <column name="EndDate" sql-type="smalldatetime(16)"/>
+        </property>
+        <property name="seats">
+            <column name="Seats" sql-type="int(10)"/>
+        </property>
+    </class>
+</hibernate-mapping>

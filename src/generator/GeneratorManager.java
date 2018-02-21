@@ -28,18 +28,14 @@ public class GeneratorManager {
 
         int maxNumberOfDaysInConference = 4;
         int numberOfOrganizers = 150;
-        int numberOfCustomers = 400;
 
-        int maxNumberOfSeats = 100;
+
+
         int numberOfConferenceReservation = 5;
 
 
-        String conferenceStartTime = startTimes[new Random().nextInt(startTimes.length)]; //done
-        //int conferenceID = new Random().nextInt(numberOfConferences) + 1; //done
+        String conferenceStartTime;
         int conferenceID=1;
-        //int seatsOnWorkshop = new Random().nextInt(seatsInReservation) + 1;
-
-        //int numberOfAttendee = new Random().nextInt(seatsInReservation) + 1;
         int conferenceDayID = conferenceDaysStartID; //done
         int customerID=0;
         int seatsOnConference=50;
@@ -89,18 +85,17 @@ public class GeneratorManager {
                 pricesGenerator.generatePrices(sessionFactory);
 
 
-                //int numberOfWorkshops = new Random().nextInt(5);
+
                 int numberOfWorkshops = 4;
 
                 for (int j = 0; j < numberOfWorkshops; j++) {
                     WorkshopsGenerator workshopsGenerator = new WorkshopsGenerator(sessionFactory);
                     workshopsGenerator.generateWorkshops(seatsOnConference, conferenceDayID);
-                    //workshopStartID++;
+
                 }
 
 
                 for (int k = 0; k < numberOfConferenceReservation; k++) {
-                    //int customerID = new Random().nextInt(numberOfCustomers) + 1; //done it can be random
                     customerID++;
                     ConferenceReservationsGenerator conferenceReservationsGenerator = new ConferenceReservationsGenerator(sessionFactory);
                     conferenceReservationsGenerator.generateConferenceReservations(customerID, conferenceDayID, seatsInReservation, conferenceStartTime);

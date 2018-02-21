@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:sqlserver://mssql.iisg.agh.edu.pl;database=jsroka_a</property>
+        <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="connection.username"> jsroka </property>
+        <property name="connection.password">4F9vKeXqqQ </property>
+        <mapping class="dbmodel.entities.AttendeeEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/AttendeeEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.ConferenceDaysEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/ConferenceDaysEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.ConferencePrincipantsEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/ConferencePrincipantsEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.ConferenceReservationsEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/ConferenceReservationsEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.ConferencesEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/ConferencesEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.CustomerEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/CustomerEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.OrganizersEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/OrganizersEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.PricesEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/PricesEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.WorkshopPrincipantsEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/WorkshopPrincipantsEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.WorkshopReservationsEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/WorkshopReservationsEntity.hbm.xml"/>
+        <mapping class="dbmodel.entities.WorkshopsEntity"/>
+        <mapping resource="dbmodel/hibernateMappings/WorkshopsEntity.hbm.xml"/>
+
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

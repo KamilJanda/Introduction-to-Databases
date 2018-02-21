@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="dbmodel.entities.CustomerEntity" table="Customer" schema="dbo" catalog="jsroka_a">
+        <id name="customerId">
+            <column name="CustomerID" sql-type="int identity(10)"/>
+            <generator class="identity" />
+        </id>
+        <property name="customerName">
+            <column name="CustomerName" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="country">
+            <column name="Country" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="city">
+            <column name="City" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="address">
+            <column name="Address" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="phone">
+            <column name="Phone" sql-type="nchar(10)" not-null="false"/>
+        </property>
+        <property name="isCompany">
+            <column name="isCompany" sql-type="bit(1)"/>
+        </property>
+        <property name="nip">
+            <column name="NIP" sql-type="nchar(10)" not-null="false"/>
+        </property>
+    </class>
+</hibernate-mapping>

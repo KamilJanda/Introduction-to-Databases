@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="dbmodel.entities.AttendeeEntity" table="Attendee" schema="dbo" catalog="jsroka_a">
+        <id name="attendeeId">
+            <column name="AttendeeID" sql-type="int identity(10)"/>
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customer" column = "customerid"
+                     class="dbmodel.entities.CustomerEntity" not-null="true" />
+        <property name="studentIdCardNumber">
+            <column name="StudentIDCardNumber" sql-type="int(10)" not-null="false"/>
+        </property>
+        <property name="firstName">
+            <column name="FirstName" sql-type="nvarchar(20)"/>
+        </property>
+        <property name="lastName">
+            <column name="LastName" sql-type="nvarchar(20)"/>
+        </property>
+        <property name="email">
+            <column name="Email" sql-type="nvarchar(50)"/>
+        </property>
+        <property name="password">
+            <column name="Password" sql-type="nvarchar(20)"/>
+        </property>
+    </class>
+</hibernate-mapping>
